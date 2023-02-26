@@ -19,16 +19,21 @@ export function client() {
           debug("Requesting %s %s", options.method, options.url);
         },
       ],
-      afterResponse: [
-        (response) => {
-          if (response.statusCode === 502) {
+      beforeError: [
+        (error) => {
+          const { code } = error;
+          if (code === "ECONNREFUSED") {
             console.error(
               kleur.bgRed(
-                "Received bad gateway error. If the API is not running, please start it in a separate process."
+                "Connection refused. If the API is not running, please start it in a separate process."
               )
             );
           }
-
+          return error;
+        },
+      ],
+      afterResponse: [
+        (response) => {
           debug(
             "Request for %s had status %d",
             response.url,
