@@ -9,7 +9,7 @@ export const t = initTRPC.context<Context>().create();
 
 export const appRouter = t.router({
   breweries: t.procedure.query(({ ctx }) => {
-    const breweries = ctx.prisma.breweries.findMany();
+    const breweries = ctx.prisma.breweries.findMany({ take: 50 });
     return breweries;
   }),
   createBrewery: t.procedure

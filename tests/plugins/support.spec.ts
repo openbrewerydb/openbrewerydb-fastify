@@ -1,5 +1,4 @@
-import { test } from "uvu";
-import * as assert from "uvu/assert";
+import { test, expect } from "@playwright/test";
 import Fastify from "fastify";
 import Support from "../../src/plugins/support.js";
 
@@ -9,7 +8,5 @@ test("support works standalone", async () => {
 
   await fastify.ready();
   // @ts-expect-error
-  assert.equal(fastify.someSupport(), "hugs");
+  expect(fastify.someSupport()).toBe("hugs");
 });
-
-test.run();

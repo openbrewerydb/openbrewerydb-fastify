@@ -62,3 +62,6 @@ profile*
 
 # Output
 dist
+/test-results/
+/playwright-report/
+/playwright/.cache/
