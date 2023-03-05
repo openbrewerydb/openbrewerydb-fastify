@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model breweries {
+  id             String   @id @default(uuid())
+  name           String   @db.VarChar
+  brewery_type   String   @db.VarChar
+  address_1      String?  @db.VarChar
+  address_2      String?  @db.VarChar
+  address_3      String?  @db.VarChar
+  city           String   @db.VarChar
+  state_province String   @db.VarChar
+  postcode       String   @db.VarChar
+  country        String   @db.VarChar
+  longitude      Decimal? @db.Decimal
+  latitude       Decimal? @db.Decimal
+  website_url    String?  @db.VarChar
+  phone          String?  @db.VarChar
+}

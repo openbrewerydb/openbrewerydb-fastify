@@ -1,6 +1,3 @@
-import pgPromise from "pg-promise";
-import { postgresConnectionString } from "./config.js";
+import { PrismaClient } from "@prisma/client";
 
-const pgp = pgPromise();
-
-export const db = pgp(postgresConnectionString);
+export const prisma = new PrismaClient();
